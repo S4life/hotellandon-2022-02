@@ -19,6 +19,7 @@ namespace HotelLandon.MvcRazor.Pages.Rooms
 
         public async Task OnGetAsync()
         {
+            //bah oua hippi yea hippi yo
             Rooms = await repository.GetAllAsync();
         }
     }
