@@ -1,20 +1,23 @@
-using HotelLandon.Models;
-using HotelLandon.Repository;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using HotelLandon.Data;
+using HotelLandon.Models;
 
 namespace HotelLandon.MvcRazor.Pages.Rooms
 {
     public class EditModel : PageModel
     {
-        private readonly IRepositoryBase<Room> repository;
+        private readonly HotelLandon.Repository.IRepositoryBase<Room> _context;
 
-        public EditModel(IRepositoryBase<Room> repository)
+        public EditModel(HotelLandon.Repository.IRepositoryBase<Room> context)
         {
-            this.repository = repository;
+            _context = context;
         }
 
         [BindProperty]
@@ -22,12 +25,12 @@ namespace HotelLandon.MvcRazor.Pages.Rooms
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || !id.HasValue)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            Room = await repository.GetAsync(id.Value);
+            Room = await _context.GetAsync(id.Value);
 
             if (Room == null)
             {
@@ -45,30 +48,12 @@ namespace HotelLandon.MvcRazor.Pages.Rooms
                 return Page();
             }
 
-            _context.Attach(Room).State = EntityState.Modified;
+           await _context.UpdateAsync(Room, Room.Id);
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!RoomExists(Room.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
+           
             return RedirectToPage("./Index");
         }
 
-        private bool RoomExists(int id)
-        {
-            return _context.Rooms.Any(e => e.Id == id);
-        }
+        
     }
 }
