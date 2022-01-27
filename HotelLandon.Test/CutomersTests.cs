@@ -52,7 +52,7 @@ namespace HotelLandon.Tests
                     lastName = LastName,
                 };
             }
-            Assert.IsNotType(Customer, Celeb);
+           // Assert.IsNotType(Customer, Celeb);
         }
 
        
