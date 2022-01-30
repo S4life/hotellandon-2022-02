@@ -28,12 +28,12 @@ namespace HotelLandon.DemoEfCore
                 Console.WriteLine(ex.Message);
                 Console.ResetColor();
             }
-            
+
             Customer customer = new Customer()
             {
                 FirstName = firstName,
                 LastName = lastName,
-                BirthDate = birthDate
+                BirthDate = birthDate.Date
             };
 
             if (customer.BirthDate < DateTime.Today.AddYears(-100))

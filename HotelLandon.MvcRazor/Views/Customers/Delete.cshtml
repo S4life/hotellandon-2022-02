@@ -9,7 +9,7 @@
     <div style="color:brown">Supprimer le client suivant ?</div><br /><br />
     <div>@Model.FirstName</div>
     <div>@Model.LastName</div>
-    <div>@Model.BirthDate</div><br />
+    <div>@Model.BirthDate.ToShortDateString()</div><br />
 
     <button type="submit" style="background-color:yellowgreen; color:darkred;">Supprimer</button>
 </form>

@@ -22,7 +22,7 @@
         <tr style="color:antiquewhite;font-weight:bold;">
             <td>@customer.FirstName</td>
             <td>@customer.LastName</td>
-            <td>@customer.BirthDate</td>
+            <td>@customer.BirthDate.ToShortDateString()</td>
             <td style="display:flex;">
 
                 @using (Html.BeginForm("Details", "Customers", new { Id = customer.Id }, FormMethod.Get))

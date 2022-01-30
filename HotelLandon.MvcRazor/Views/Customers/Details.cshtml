@@ -7,9 +7,9 @@
 <div style="color: antiquewhite; font-weight: bold; text-align: center;align-content: center;">
     <div>Nom : @Model.LastName</div><br />
     <div>Prénom : @Model.FirstName</div><br />
-    <div>Date de naissance : @Model.BirthDate</div><br />
+    <div>Date de naissance : @Model.BirthDate.ToShortDateString()</div><br />
 </div>
-<div style=" text-align: center; align-content: center;display:inline-block">
+<div style=" text-align: center; align-content: center;">
     @*<a asp-action="Edit" asp-route-id="@Model.Id">Modifier</a>*@
     @using (Html.BeginForm("Edit", "Customers", new { Id = Model.Id }, FormMethod.Get))
     {<button style="background-color:darkslategrey;color:black;">Modifier</button>}

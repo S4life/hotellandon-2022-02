@@ -18,12 +18,12 @@ namespace HotelLandon.MvcRazor.Controllers
             nameof(Customer.Id),
             nameof(Customer.FirstName),
             nameof(Customer.LastName),
-            nameof(Customer.BirthDate) })] Customer entity) => base.Create(entity);
+            nameof(Customer.BirthDate.Date) })] Customer entity) => base.Create(entity);
 
         public override Task<IActionResult> Edit([Bind(new[] {
             nameof(Customer.Id),
             nameof(Customer.FirstName),
             nameof(Customer.LastName),
-            nameof(Customer.BirthDate) })] Customer entity, int id) => base.Edit(entity, id);
+            nameof(Customer.BirthDate.Date) })] Customer entity, int id) => base.Edit(entity, id);
     }
 }
