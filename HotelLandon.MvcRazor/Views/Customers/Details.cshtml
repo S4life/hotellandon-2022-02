@@ -4,12 +4,19 @@
 @{
     ViewData["Title"] = "Client";
 }
-<div>
+<div style="color:antiquewhite;font-weight:bold;">
     <div>Nom : @Model.LastName</div>
     <div>Prénom : @Model.FirstName</div>
     <div>Date de naissance : @Model.BirthDate</div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Modifier</a>
-    <a asp-action="Delete" asp-route-id="@Model.Id">Supprimer</a>
+<div style="display:flex;">
+    @*<a asp-action="Edit" asp-route-id="@Model.Id">Modifier</a>*@
+    @using (Html.BeginForm("Edit", "Customers", new { Id = Model.Id }, FormMethod.Get))
+    {<button style="background-color:darkslategrey;color:black;">Modifier</button>}
+    @*<a asp-action="Delete" asp-route-id="@Model.Id">Supprimer</a>*@
+    @using (Html.BeginForm("Delete", "Customers", new { Id = Model.Id }, FormMethod.Get))
+    {<button style="background-color:darkred;color:black;">Supprimer</button>}
+
+    @using (Html.BeginForm("Index", "Customers", FormMethod.Get))
+    {<button style="background-color:aqua;color:black;">Revenir</button>}
 </div>

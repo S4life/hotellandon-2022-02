@@ -1,6 +1,6 @@
 ﻿@model Customer
 @*Edit customer*@
-<form method="post">
+<form method="post" style="color:antiquewhite;font-weight:bold;">
     <div>
         Nom de famille :
         <br />
@@ -17,7 +17,8 @@
         <input asp-for="BirthDate" />
     </div>
     <div>
-        <button type="submit">Modifier</button>
+        <button type="submit" style="background-color:lightgreen;color:black;">Modifier</button>
+        <button type="submit" asp-action="Index" style="background-color:burlywood;color:black;">Revenir</button>
     </div>
 </form>
 

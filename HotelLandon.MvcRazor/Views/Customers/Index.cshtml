@@ -5,10 +5,11 @@
     ViewData["Title"] = "Clients";
 }
 <div>
-    <a asp-action="Create">Nouveau</a>
-    <!-- /customers/create -->
+    <h1 style="font-family:'Verdana', sans-serif;font-weight:bolder; text-align:center;color:aqua" >Listes des clients</h1>
+    @using (Html.BeginForm("Create", "Customers", FormMethod.Get)){<button style="background-color:aqua;color:black;">Nouveau</button>}
+        <!-- /customers/create -->
 </div>
-<table class="table w-100">
+<table class="table w-100" style="color: burlywood; font-weight:bolder;">
     <tr>
         <th>Prénom</th>
         <th>Nom</th>
@@ -18,14 +19,23 @@
 
     @foreach (var customer in Model)
     {
-        <tr>
+        <tr style="color:antiquewhite;font-weight:bold;">
             <td>@customer.FirstName</td>
             <td>@customer.LastName</td>
             <td>@customer.BirthDate</td>
-            <td>
-                <a asp-action="Details" asp-route-id="@customer.Id">Détails</a>
-                <a asp-action="Edit" asp-route-id="@customer.Id">Modifier</a>
-                <a asp-action="Delete" asp-route-id="@customer.Id">Supprimer</a>
+            <td style="display:flex;">
+
+                @using (Html.BeginForm("Details", "Customers", new { Id = customer.Id }, FormMethod.Get))
+                {<button style="background-color:blue;color:black;">Détails</button>}
+                @*<a asp-action="Details" asp-route-id="@customer.Id">Détails</a>*@
+
+                @using (Html.BeginForm("Edit", "Customers", new { Id = customer.Id }, FormMethod.Get))
+                {<button style="background-color:darkslategrey;color:black;">Modifier</button>}
+                @*<a asp-action="Edit" asp-route-id="@customer.Id">Modifier</a>*@
+
+                @using (Html.BeginForm("Delete", "Customers", new { Id = customer.Id }, FormMethod.Get))
+                {<button style="background-color:darkred;color:black;">Supprimer</button>}
+                @*<a asp-action="Delete" asp-route-id="@customer.Id">Supprimer</a>*@
                 <!-- /customers/edit/{id} -->
             </td>
         </tr>
