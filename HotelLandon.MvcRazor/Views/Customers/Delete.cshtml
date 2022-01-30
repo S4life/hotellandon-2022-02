@@ -4,12 +4,12 @@
 @{
     ViewData["Title"] = "Are you sure to delete ?";
 }
-<form method="post" asp-action="DeleteCompleted" style="color:antiquewhite;font-weight:bold;">
+<form method="post" asp-action="DeleteCompleted" style="color: antiquewhite; font-weight: bold; text-align: center; align-content: center; ">
 
-    <div>Supprimer le client suivant ?</div>
+    <div style="color:brown">Supprimer le client suivant ?</div><br /><br />
     <div>@Model.FirstName</div>
     <div>@Model.LastName</div>
-    <div>@Model.BirthDate</div>
+    <div>@Model.BirthDate</div><br />
 
     <button type="submit" style="background-color:yellowgreen; color:darkred;">Supprimer</button>
 </form>

@@ -1,21 +1,21 @@
 ﻿@*Create Customer*@
 @model Customer
 
-<form method="post" style="color:antiquewhite;font-weight:bold;">
+<form method="post" style="color:antiquewhite;font-weight:bold;font-family:'Verdana', sans-serif;font-weight:bolder; text-align:center;color:aqua;align-content:center;">
     <div>
         Nom de famille :
         <br />
-        <input asp-for="LastName" />
+        <input asp-for="LastName" /><br />
     </div>
     <div>
         Prénom :
         <br />
-        <input asp-for="FirstName" />
+        <input asp-for="FirstName" /><br />
     </div>
     <div>
         Date de naissance :
         <br />
-        <input asp-for="BirthDate" />
+        <input asp-for="BirthDate" /><br />
     </div>
     <div>
         <button type="submit" style="background-color:green;color:white;">Créer</button>
